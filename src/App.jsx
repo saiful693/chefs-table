@@ -7,12 +7,17 @@ import Recipes from './components/Recipes/Recipes'
 
 function App() {
 
-   const [cooks,setCooks]=useState([]);
+  const [cooks, setCooks] = useState([]);
 
-   const handleWantToCook=(recipe) =>{
-      const newCook=[...cooks,recipe];
+  const handleWantToCook = (recipe) => {
+    if (cooks.includes(recipe)) {
+      alert('Item exist')
+    } else {
+      const newCook = [...cooks, recipe];
       setCooks(newCook)
-   }
+    }
+
+  }
 
 
   return (
@@ -24,7 +29,7 @@ function App() {
         <div className='flex gap-6'>
           <Recipes handleWantToCook={handleWantToCook}></Recipes>
           <Cooks cooks={cooks}></Cooks>
-          
+
         </div>
 
       </div>
