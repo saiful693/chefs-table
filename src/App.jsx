@@ -9,8 +9,9 @@ function App() {
 
    const [cooks,setCooks]=useState([]);
 
-   const handleWantToCook=() =>{
-    console.log('cooking in progress');
+   const handleWantToCook=(recipe) =>{
+      const newCook=[...cooks,recipe];
+      setCooks(newCook)
    }
 
 
@@ -21,8 +22,8 @@ function App() {
         <h1 className='text-4xl text-center font-semibold'>Our Recipes</h1>
         <p className='mt-6 text-center mb-12'>Explore 100+ recipes, recipes in videos, the latest food news, articles, kitchen hacks, diet plans and many more at Recipe Calories.</p>
         <div className='flex gap-6'>
-          <Recipes></Recipes>
-          <Cooks></Cooks>
+          <Recipes handleWantToCook={handleWantToCook}></Recipes>
+          <Cooks cooks={cooks}></Cooks>
           
         </div>
 

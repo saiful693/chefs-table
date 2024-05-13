@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import { CiClock2 } from "react-icons/ci";
 import { FaFire } from "react-icons/fa";
 
-const Recipe = ({ recipe }) => {
-    const { recipe_id, recipe_name, recipe_image, short_description, ingredients, preparing_time,calories } = recipe;
+const Recipe = ({ recipe, handleWantToCook }) => {
+    const {  recipe_name, recipe_image, short_description, ingredients, preparing_time,calories } = recipe;
     return (
         <div className="p-5 border-2 rounded-2xl">
 
@@ -26,14 +26,15 @@ const Recipe = ({ recipe }) => {
                     <p>{calories}</p>
                 </div>
             </div>
-            <button className='mt-6 btn btn-primary bg-[#0BE58A] px-6 py-3 text-lg font-medium rounded-3xl'>Want to Cook</button>
+            <button onClick={() => handleWantToCook(recipe)} className='mt-6 btn btn-primary bg-[#0BE58A] px-6 py-3 text-lg font-medium rounded-3xl'>Want to Cook</button>
 
         </div>
     );
 };
 
 Recipe.propTypes = {
-    recipe: PropTypes.object
+    recipe: PropTypes.object,
+    handleWantToCook:PropTypes.func
 }
 
 export default Recipe;
