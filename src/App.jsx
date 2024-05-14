@@ -39,9 +39,9 @@ function App() {
       <div className='mt-24 max-w-screen-xl mx-auto'>
         <h1 className='text-4xl text-center font-semibold'>Our Recipes</h1>
         <p className='mt-6 text-center mb-12'>Explore 100+ recipes, recipes in videos, the latest food news, articles, kitchen hacks, diet plans and many more at Recipe Calories.</p>
-        <div className='flex gap-6'>
+        <div className='flex flex-col md:flex-row gap-6'>
           <Recipes handleWantToCook={handleWantToCook}></Recipes>
-          <div className='w-2/5 border-2 rounded-2xl'>
+          <div className='md:w-2/5 border-2 rounded-2xl'>
             <Cooks cooks={cooks} handleCooking={handleCooking}></Cooks>
             <Cookings cookings={cookings}></Cookings>
           </div>
