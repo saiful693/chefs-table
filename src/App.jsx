@@ -4,20 +4,33 @@ import './App.css'
 import Cooks from './components/Cooks/Cooks'
 import Header from './components/Header/Header'
 import Recipes from './components/Recipes/Recipes'
+import { showToast } from '../src/components/Toast/Toast'
+import Cookings from './components/Cookings/Cookings'
 
 function App() {
 
   const [cooks, setCooks] = useState([]);
+  const [cookings,setCookings] = useState([])
 
   const handleWantToCook = (recipe) => {
     if (cooks.includes(recipe)) {
-      alert('Item exist')
+      showToast()
     } else {
       const newCook = [...cooks, recipe];
       setCooks(newCook)
     }
 
   }
+
+
+  const handleCooking=(cook) =>{
+      const newCooking=[...cookings, cook];
+      setCookings(newCooking)
+
+      const remaingCook=cooks.filter(cook1 => cook1.recipe_id !== cook.recipe_id)
+      setCooks(remaingCook)
+  }
+
 
 
   return (
@@ -28,7 +41,10 @@ function App() {
         <p className='mt-6 text-center mb-12'>Explore 100+ recipes, recipes in videos, the latest food news, articles, kitchen hacks, diet plans and many more at Recipe Calories.</p>
         <div className='flex gap-6'>
           <Recipes handleWantToCook={handleWantToCook}></Recipes>
-          <Cooks cooks={cooks}></Cooks>
+          <div className='w-2/5 border-2 rounded-2xl'>
+            <Cooks cooks={cooks} handleCooking={handleCooking}></Cooks>
+            <Cookings cookings={cookings}></Cookings>
+          </div>
 
         </div>
 
